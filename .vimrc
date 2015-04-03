@@ -8,6 +8,9 @@ set t_Co=256
 set cursorline
 set cursorcolumn
 autocmd VimEnter * NERDTree
+" 设置NerdTree
+map <F2> :NERDTreeMirror<CR>
+map <F2> :NERDTreeToggle<CR>
 map  :silent! NERDTreeToggle
 call pathogen#infect()
 "powerline{
