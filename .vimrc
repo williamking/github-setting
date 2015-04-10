@@ -14,7 +14,9 @@ map <F2> :NERDTreeToggle<CR>
 map  :silent! NERDTreeToggle
 call pathogen#infect()
 set cindent
-"powerline{
+set expandtab
+set shiftwidth=4
+"powerline {
 set guifont=PowerlineSymbols\ for\ Powerline
 set nocompatible
 set t_Co=256
@@ -36,29 +38,11 @@ let g:multi_cursor_start_key='g<C-n>'
 let g:multi_cursor_start_word_key='<C-n>'
  
 "新建.c,.h,.sh,.java文件，自动插入文件头 
-"autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
 """定义函数SetTitle，自动插入文件头 
-func SetTitle() 
+function! SetTitle() 
     "如果文件类型为.sh文件 
-        if &filetype == 'sh' 
-                call
-                setline(1,"\#########################################################################") 
-                        call append(line("."), "\# File Name: ".expand("%")) 
-                                call append(line(".")+1, "\# Author: ma6174") 
-                                        call append(line(".")+2, "\# mail:
-                                        ma6174@163.com") 
-                                                call append(line(".")+3, "\#
-                                                Created Time:
-                                                ".strftime("%c")) 
-                                                        call
-                                                        append(line(".")+4,
-                                                        "\#########################################################################") 
-                                                                call
-                                                                append(line(".")+5,
-                                                                "\#!/bin/bash") 
-                                                                        call
-                                                                        append(line(".")+6,
-                                                                        "") 
+    if &filetype == 'sh' 
     else 
         call setline(1, "/*************************************************************************") 
         call append(line("."), "    > File Name: ".expand("%")) 
@@ -82,4 +66,5 @@ func SetTitle()
         call append(line(".")+2, "    > Mail: williamjwking@gmail.com")
     "新建文件后，自动定位到文件末尾
     autocmd BufNewFile * normal G
-endfunc 
+endfunction
+
