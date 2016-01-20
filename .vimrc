@@ -1,4 +1,4 @@
-filetype plugin on
+filetype plugin indent on
 syntax enable
 syntax on
 set tabstop=4
@@ -68,3 +68,15 @@ function! SetTitle()
     autocmd BufNewFile * normal G
 endfunction
 
+"JavaBrowser
+let Javabrowser_Use_Icon = 1
+let JavaBrowser_Use_Highlight_Tag = 1
+
+map <F10> :JavaBrowser<CR> 
+imap <F10> <ESC><F11>
+
+setlocal omnifunc=javacomplete#Complete 
+" Only do this part when compiled with support for autocommands. 
+if has("autocmd") 
+   autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
+endif
